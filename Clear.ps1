@@ -1,5 +1,5 @@
-cmd /c "reg delete 'HKCU\Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Compatibility Assistant\Store' /f"
-cmd /c "reg delete 'HKCR\Local Settings\Software\Microsoft\Windows\Shell' /f"
+reg delete "HKCU\Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Compatibility Assistant\Store" /f
+reg delete "HKCR\Local Settings\Software\Microsoft\Windows\Shell" /f
 
 taskkill /f /im explorer.exe
 net stop EventLog
@@ -18,12 +18,12 @@ Remove-Item "env:%AppData%\Microsoft\Windows\PowerShell\PSReadLine\*.txt"
 
 
 Rundll32.exe apphelp.dll,ShimFlushCache
-fsutil usn deleteJournal /d c:
-fsutil usn deleteJournal /d d:
-fsutil usn deleteJournal /d e:
-fsutil usn deleteJournal /d f:
-fsutil usn deleteJournal /d g:
-
+$drives = Get-WmiObject Win32_LogicalDisk | Where-Object { $_.DriveType -eq 3 }
+foreach ($drive in $drives) {
+    $driveLetter = $drive.DeviceID
+    Write-Host "Deleting USN journal on $driveLetter"
+    fsutil usn deleteJournal /d $driveLetter
+}
 
 Start-Process explorer.exe
 net start EventLog
