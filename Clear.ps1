@@ -2,6 +2,7 @@ Write-Host "Clearing Registry"
 reg delete "HKCU\Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Compatibility Assistant\Store" /f
 reg delete "HKCR\Local Settings\Software\Microsoft\Windows\Shell" /f
 
+
 taskkill /f /im explorer.exe
 net stop EventLog
 
