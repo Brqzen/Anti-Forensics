@@ -41,6 +41,8 @@ Remove-Item "$env:AppData\Microsoft\Windows\PowerShell\PSReadLine\*.txt" -Force
 
 Write-Host "Clearing ShimCache"
 Rundll32.exe apphelp.dll,ShimFlushCache
+
+
 $drives = Get-WmiObject Win32_LogicalDisk | Where-Object { $_.DriveType -eq 3 }
 foreach ($drive in $drives) {
     $driveLetter = $drive.DeviceID
