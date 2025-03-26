@@ -13,16 +13,16 @@ taskkill /f /im explorer.exe
 net stop EventLog
 
 Write-Host "Clearing Files"
-Remove-Item "C:\Windows\Prefetch\*.pf"
-Remove-Item "C:\Windows\System32\winevt\Logs\*.evtx"
-Remove-Item "C:\Windows\appcompat\pca\*.txt"
-Remove-Item "C:\Windows\System32\sru\SRUDB.dat"
-Remove-Item "C:\ProgramData\NVIDIA Corporation\Drs\nvAppTimestamps"
-Remove-Item "env:%temp%\*"
-Remove-Item "env:%AppData%\Microsoft\Windows\Recent\*.lnk"
-Remove-Item "env:%AppData%\Microsoft\Windows\Recent\CustomDestinations\*ms"
-Remove-Item "env:%AppData%\Microsoft\Windows\Recent\AutomaticDestinations\*ms"
-Remove-Item "env:%AppData%\Microsoft\Windows\PowerShell\PSReadLine\*.txt"
+Remove-Item "C:\Windows\Prefetch\*.pf" -Force
+Remove-Item "C:\Windows\System32\winevt\Logs\*.evtx" -Force
+Remove-Item "C:\Windows\appcompat\pca\*.txt" -Force
+Remove-Item "C:\Windows\System32\sru\SRUDB.dat" -Force
+Remove-Item "C:\ProgramData\NVIDIA Corporation\Drs\nvAppTimestamps" -Force
+Remove-Item "$env:temp\*" -Force
+Remove-Item "$env:AppData\Microsoft\Windows\Recent\*.lnk" -Force
+Remove-Item "$env:AppData\Microsoft\Windows\Recent\CustomDestinations\*ms" -Force
+Remove-Item "$env:AppData\Microsoft\Windows\Recent\AutomaticDestinations\*ms" -Force
+Remove-Item "$env:AppData\Microsoft\Windows\PowerShell\PSReadLine\*.txt" -Force
 
 
 Rundll32.exe apphelp.dll,ShimFlushCache
