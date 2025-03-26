@@ -6,7 +6,7 @@ do {
     Write-Host "3 - Check Services"
     Write-Host "0 - Exit"
 
-    $choice = Read-Host "Enter your choice (0, 1, 2, or 3)"
+    $choice = Read-Host "Enter 0, 1, 2, or 3"
 
     switch ($choice) {
         "1" { 
@@ -21,6 +21,7 @@ do {
             sc config dusmsvc start=auto
             sc config scheduler start=auto
             sc config cdpsvc start=auto
+            sc config sgrmbroker start=auto
             Write-Host "Services enabled." 
         }
         "2" { 
@@ -35,6 +36,7 @@ do {
             sc config dusmsvc start=disabled
             sc config scheduler start=disabled
             sc config cdpsvc start=disabled
+            sc config sgrmbroker start=disabled
             Write-Host "Services disabled." 
         }
         "3" { 
@@ -48,6 +50,8 @@ do {
             get-service | findstr -i "Appinfo"
             get-service | findstr -i "dusmsvc"
             get-service | findstr -i "scheduler"
+            get-service | findstr -i "SgrmBroker"
+            get-service | findstr -i "cdpsvc"
         }
         "0" { Write-Host "Exiting..."; break }
         default { Write-Host "Invalid choice, please select 0, 1, 2, or 3." }
