@@ -53,10 +53,10 @@ do {
             get-service | findstr -i "SgrmBroker"
             get-service | findstr -i "cdpsvc"
         }
-        "0" { Write-Host "Exiting..."; break }
+        "0" { Write-Host "Exiting..."; return 0 }
         default { Write-Host "Invalid choice, please select 0, 1, 2, or 3." }
     }
-
+pause
 } while ($true)
 
 
