@@ -2,7 +2,7 @@ Write-Host "Please fully close all Minecraft Launchers, AnyDesk, and Discord bef
 pause
 
 Write-Host "Clearing Discord Traces"
-Remove-Item "C:\Users\%username%\AppData\Roaming\discord\Local Storage\leveldb\*.ldb" -Force
+Remove-Item "$env:AppData\discord\Local Storage\leveldb\*.ldb" -Force
 
 Write-Host "Clearing AnyDesk Traces"
 Remove-Item "$env:AppData\AnyDesk" -Force
