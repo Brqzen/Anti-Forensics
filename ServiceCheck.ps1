@@ -6,37 +6,37 @@ do {
     Write-Host "3 - Check Services"
     Write-Host "0 - Exit"
 
-    $choice = (Read-Host "Enter 0, 1, 2, or 3").Trim()
+    $choice = Read-Host "Enter 0, 1, 2, or 3"
 
     switch ($choice) {
         "1" { 
-            sc config pcasvc start= auto
-            sc config DPS start= auto
-            sc config sysmain start= auto
-            sc config eventlog start= auto
-            sc config diagtrack start= auto
-            sc config Searchindexer start= auto
-            sc config BAM start= auto
-            sc config Appinfo start= auto
-            sc config dusmsvc start= auto
-            sc config scheduler start= auto
-            sc config cdpsvc start= auto
-            sc config sgrmbroker start= auto
+            sc.exe config pcasvc start=auto
+            sc.exe config DPS start=auto
+            sc.exe config sysmain start=auto
+            sc.exe config eventlog start=auto
+            sc.exe config diagtrack start=auto
+            sc.exe config Searchindexer start=auto
+            sc.exe config BAM start=auto
+            sc.exe config Appinfo start=auto
+            sc.exe config dusmsvc start=auto
+            sc.exe config scheduler start=auto
+            sc.exe config cdpsvc start=auto
+            sc.exe config sgrmbroker start=auto
             Write-Host "Services enabled." 
         }
         "2" { 
-            sc config pcasvc start= disabled
-            sc config DPS start= disabled
-            sc config sysmain start= disabled
-            sc config eventlog start= disabled
-            sc config diagtrack start= disabled
-            sc config Searchindexer start= disabled
-            sc config BAM start= disabled
-            sc config Appinfo start= disabled
-            sc config dusmsvc start= disabled
-            sc config scheduler start= disabled
-            sc config cdpsvc start= disabled
-            sc config sgrmbroker start= disabled
+            sc.exe config pcasvc start=disabled
+            sc.exe config DPS start=disabled
+            sc.exe config sysmain start=disabled
+            sc.exe config eventlog start=disabled
+            sc.exe config diagtrack start=disabled
+            sc.exe config Searchindexer start=disabled
+            sc.exe config BAM start=disabled
+            sc.exe config Appinfo start=disabled
+            sc.exe config dusmsvc start=disabled
+            sc.exe config scheduler start=disabled
+            sc.exe config cdpsvc start=disabled
+            sc.exe config sgrmbroker start=disabled
             Write-Host "Services disabled." 
         }
         "3" { 
@@ -53,9 +53,11 @@ do {
             get-service | findstr -i "SgrmBroker"
             get-service | findstr -i "cdpsvc"
         }
-        "0" { Write-Host "Exiting..."; exit }
+        "0" { Write-Host "Exiting..."; break }
         default { Write-Host "Invalid choice, please select 0, 1, 2, or 3." }
     }
 
-    Pause
 } while ($true)
+
+
+
