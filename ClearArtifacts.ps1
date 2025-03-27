@@ -36,14 +36,14 @@ Write-Host "Clearing SRUM"
 Remove-Item "C:\Windows\System32\sru\SRUDB.dat" -Force
 Write-Host "Clearing NvAppTimestamps"
 Remove-Item "C:\ProgramData\NVIDIA Corporation\Drs\nvAppTimestamps" -Force
-Write-Host "Clearing Temp"
-Remove-Item "$env:temp\*" -Force -Recurse
 Write-Host "Clearing Recent Files"
 Remove-Item "$env:AppData\Microsoft\Windows\Recent\*.lnk" -Force
 Remove-Item "$env:AppData\Microsoft\Windows\Recent\CustomDestinations\*ms" -Force
 Remove-Item "$env:AppData\Microsoft\Windows\Recent\AutomaticDestinations\*ms" -Force
 Write-Host "Clearing PSReadLine"
 Remove-Item "$env:AppData\Microsoft\Windows\PowerShell\PSReadLine\*.txt" -Force
+Write-Host "Clearing Temp"
+Remove-Item "$env:temp\*" -Force -Recurse
 
 Write-Host "Clearing ShimCache"
 Rundll32.exe apphelp.dll,ShimFlushCache
