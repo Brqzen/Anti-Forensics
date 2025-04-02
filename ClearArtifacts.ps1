@@ -1,26 +1,17 @@
 Write-Host "Clearing MuiCache"
 reg delete "HKCR\Local Settings\Software\Microsoft\Windows\Shell" /f
-Start-Sleep -Milliseconds 50
 Write-Host "Clearing ComDlg32"
 reg delete "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\ComDlg32" /f
-Start-Sleep -Milliseconds 50
 Write-Host "Clearing RecentDocs"
 reg delete "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\RecentDocs" /f
-Start-Sleep -Milliseconds 50
 Write-Host "Clearing UserAssist"
 reg delete "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\UserAssist" /f
-Start-Sleep -Milliseconds 50
 Write-Host "Clearing RunMRU"
 reg delete "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU" /f
-Start-Sleep -Milliseconds 50
 Write-Host "Clearing Compatibility Store"
 reg delete "HKCU\Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Compatibility Assistant\Store" /f
-Start-Sleep -Milliseconds 50
 Write-Host "Clearing AppSwitch"
 reg delete "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\FeatureUsage" /f
-Start-Sleep -Milliseconds 50
-Write-Host "Clearing Taskband"
-reg delete "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Taskband" /f
 
 taskkill /f /im explorer.exe
 
