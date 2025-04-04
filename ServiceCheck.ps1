@@ -64,6 +64,8 @@ do {
             Write-Host "Services disabled." 
         }
         "3" { 
+            cls
+            Required Services
             get-service | findstr -i "sysmain"
             get-service | findstr -i "cdpsvc"
             get-service | findstr -i "pcasvc"
