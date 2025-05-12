@@ -48,4 +48,3 @@ foreach ($drive in $drives) {
 
 Start-Process explorer.exe
 net start EventLog /y
-Pause
